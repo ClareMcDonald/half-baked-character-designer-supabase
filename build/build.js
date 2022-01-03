@@ -18,7 +18,7 @@ const headEl = document.getElementById('head');
 const middleEl = document.getElementById('middle');
 const bottomEl = document.getElementById('bottom');
 const reportEl = document.getElementById('report');
-const chatchphrasesEl = document.getElementById('chatchphrases');
+const catchphrasesEl = document.getElementById('catchphrases');
 const catchphraseInput = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
 const logoutButton = document.getElementById('logout');
@@ -112,8 +112,12 @@ async function fetchAndDisplayCharacter() {
 
     // if the character has a pants, display the pants in the dom
     bottomEl.value = character.bottom;
-    
+
     // loop through catchphrases and display them to the dom (clearing out old dom if necessary)
+    for (let catchphrase of catchphrases) {
+        const catchphrasesEl.textcontent = catchphrase;
+
+    }
 }
 
 function refreshData() {
