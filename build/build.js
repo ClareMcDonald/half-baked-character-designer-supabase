@@ -27,11 +27,13 @@ const logoutButton = document.getElementById('logout');
 let headCount = 0;
 let middleCount = 0;
 let bottomCount = 0;
+let catchphrases = [];
 
 headDropdown.addEventListener('change', async() => {
     // increment the correct count in state
     headCount++;
     // update the head in supabase with the correct data
+    await updateHead(headDropdown.value);
     refreshData();
 });
 
@@ -40,6 +42,7 @@ middleDropdown.addEventListener('change', async() => {
     // increment the correct count in state
     middleCount++;
     // update the middle in supabase with the correct data
+    await updateMiddle(middleDropdown.value);
     refreshData();
 });
 
@@ -48,6 +51,7 @@ bottomDropdown.addEventListener('change', async() => {
     // increment the correct count in state
     bottomCount++;
     // update the bottom in supabase with the correct data
+    await updateBottom(bottomDropdown.value);
     refreshData();
 });
 
@@ -83,7 +87,6 @@ window.addEventListener('load', async() => {
                     }
                 ]);
         }
-    }
     // and put the character's catchphrases in state (we'll need to hold onto them for an interesting reason);
 
     // then call the refreshData function to set the DOM with the updated data
