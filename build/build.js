@@ -30,7 +30,7 @@ let bottomCount = 0;
 
 headDropdown.addEventListener('change', async() => {
     // increment the correct count in state
-
+    headCount++;
     // update the head in supabase with the correct data
     refreshData();
 });
@@ -38,7 +38,7 @@ headDropdown.addEventListener('change', async() => {
 
 middleDropdown.addEventListener('change', async() => {
     // increment the correct count in state
-    
+    middleCount++;
     // update the middle in supabase with the correct data
     refreshData();
 });
@@ -46,7 +46,7 @@ middleDropdown.addEventListener('change', async() => {
 
 bottomDropdown.addEventListener('change', async() => {
     // increment the correct count in state
-    
+    bottomCount++;
     // update the bottom in supabase with the correct data
     refreshData();
 });
@@ -55,7 +55,7 @@ catchphraseButton.addEventListener('click', async() => {
     catchphraseInput.value = '';
 
     // go fetch the old catch phrases
-    
+    const catchphrases = await characters.catchphrases;
     // update the catchphrases array locally by pushing the new catchphrase into the old array
 
     // update the catchphrases in supabase by passing the mutated array to the updateCatchphrases function
