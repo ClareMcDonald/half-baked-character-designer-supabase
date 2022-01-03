@@ -17,6 +17,9 @@ export async function updateHead(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the head property
+        .from('characters')
+        .update({ head: headDropdown.value })
+        .single();
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
@@ -27,6 +30,9 @@ export async function updateMiddle(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the middle property
+        .from('characters')
+        .update({ middle: value })
+        .single();
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
@@ -37,6 +43,9 @@ export async function updateBottom(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the bottom property
+        .from('characters')
+        .update({ bottom: value })
+        .single();
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
