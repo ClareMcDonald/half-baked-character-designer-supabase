@@ -60,7 +60,7 @@ export async function updateBottom(value){
     return checkError(response);    
 }
 
-export async function updateChatchphrases(catchphrasesArray){
+export async function updateCatchphrases(catchphrasesArray){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the catchphrases property

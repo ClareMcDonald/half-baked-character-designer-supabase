@@ -6,7 +6,7 @@ import {
     updateBottom,
     updateHead,
     updateMiddle,
-    updateChatchphrases
+    updateCatchphrases
 } from '../fetch-utils.js';
 
 checkAuth();
@@ -121,7 +121,7 @@ async function fetchAndDisplayCharacter() {
     }
 
     // loop through catchphrases and display them to the dom (clearing out old dom if necessary)
-    for (let catchphrase of catchphrases) {
+    for (let catchphrase of catchphrasesArray) {
         const catchphrasesEl.textcontent = catchphrase;
 
     }
