@@ -27,7 +27,7 @@ const logoutButton = document.getElementById('logout');
 let headCount = 0;
 let middleCount = 0;
 let bottomCount = 0;
-let catchphrases = [];
+let catchphrasesArray = [];
 
 headDropdown.addEventListener('change', async() => {
     // increment the correct count in state

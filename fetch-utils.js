@@ -60,10 +60,15 @@ export async function updateBottom(value){
     return checkError(response);    
 }
 
-export async function updateChatchphrases(value){
+export async function updateChatchphrases(catchphrasesArray){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the catchphrases property
+    const response = await client
+        .from('characters')
+        .update({ catchphrases: catchphrasesArray });
+        .match({ user_id: currentUserId });
+        .single();
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
