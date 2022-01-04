@@ -75,17 +75,15 @@ window.addEventListener('load', async() => {
     // if this user turns out not to have a character
     // create a new character with correct defaults for all properties (head, middle, bottom, catchphrases)
     if (!character) {
-            const response = await client
-                .from('characters')
-                .insert([
-                    {
-                        name: 'Betty',
-                        catchphrases: [],
-                        head: 'Bird',
-                        middle: 'Blue',
-                        bottom: 'Single Leg'
-                    }
-                ]);
+        const defaultCharacter = {
+            name: 'Betty',
+            catchphrases: [],
+            head: 'Bird',
+            middle: 'Blue',
+            bottom: 'Single Leg'
+        };
+
+        character = await createCharacter(defaultCharacter);
         }
     // and put the character's catchphrases in state (we'll need to hold onto them for an interesting reason);
 

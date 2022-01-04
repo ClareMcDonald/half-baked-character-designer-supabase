@@ -7,9 +7,15 @@ export async function createCharacter(character){
     const newCharacter = {
         ...character, 
         user_id: client.auth.user().id, 
+
     };
 
     // use the newCharacter to create a single new character for this user in supabase
+    const response = await client
+        .from('characters')
+        .insert([newCharacter])
+        .single();
+    
     return checkError(response);
 }
 
@@ -17,9 +23,10 @@ export async function updateHead(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the head property
+    const response = await client
         .from('characters')
-        .update({ head: headDropdown.value })
-        .single();
+        .update({ head: value })
+        .match({ user_id: currentUserId });
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
@@ -30,9 +37,10 @@ export async function updateMiddle(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the middle property
+    const response = await client
         .from('characters')
         .update({ middle: value })
-        .single();
+        .match({ user_id: currentUserId });
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
@@ -43,9 +51,10 @@ export async function updateBottom(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the bottom property
+    const response = await client
         .from('characters')
         .update({ bottom: value })
-        .single();
+        .match({ user_id: currentUserId });
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
