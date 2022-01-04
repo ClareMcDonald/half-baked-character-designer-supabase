@@ -2,7 +2,7 @@ import {
     checkAuth, 
     getCharacter,
     logout, 
-    createCharacter,
+    createDefaultCharacter,
     updateBottom,
     updateHead,
     updateMiddle,
@@ -63,7 +63,7 @@ catchphraseButton.addEventListener('click', async() => {
     const newCatchphrase = catchphraseIput.value;
 
     catchphrasesArray.push(newCatchphrase);
-    
+
     // update the catchphrases in supabase by passing the mutated array to the updateCatchphrases function
     refreshData();
     catchphraseInput.value = '';
@@ -71,21 +71,15 @@ catchphraseButton.addEventListener('click', async() => {
 
 window.addEventListener('load', async() => {
     // on load, attempt to fetch this user's character
-    let character = await getCharacter();
-
+    const character = await getCharacter();
+    
     // if this user turns out not to have a character
     // create a new character with correct defaults for all properties (head, middle, bottom, catchphrases)
     if (!character) {
-        const defaultCharacter = {
-           // name: 'Betty',
-            catchphrases: [],
-            head: 'bird',
-            middle: 'blue',
-            bottom: 'leg'
-        };
 
-     await createCharacter(defaultCharacter);
-        }
+        await createDefaultCharacter();
+        
+    }
     // and put the character's catchphrases in state (we'll need to hold onto them for an interesting reason);
 
     // then call the refreshData function to set the DOM with the updated data
