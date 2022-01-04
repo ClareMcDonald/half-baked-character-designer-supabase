@@ -56,16 +56,17 @@ bottomDropdown.addEventListener('change', async() => {
 });
 
 catchphraseButton.addEventListener('click', async() => {
-    catchphraseInput.value = '';
-
     // go fetch the old catch phrases
-    const character = await getCharacter();
+    await getCharacter();
 
     // update the catchphrases array locally by pushing the new catchphrase into the old array
-    character.catchphrases.push(catchphraseInput.value);
+    const newCatchphrase = catchphraseIput.value;
 
+    catchphrasesArray.push(newCatchphrase);
+    
     // update the catchphrases in supabase by passing the mutated array to the updateCatchphrases function
     refreshData();
+    catchphraseInput.value = '';
 });
 
 window.addEventListener('load', async() => {
@@ -121,8 +122,8 @@ async function fetchAndDisplayCharacter() {
     }
 
     // loop through catchphrases and display them to the dom (clearing out old dom if necessary)
-    //for (let catchphrase of catchphrasesArray) {
-       // const catchphrasesEl.textcontent = catchphrase;
+    for (let catchphrase of catchphrasesArray) {
+        const catchphrasesEl.textcontent = catchphrase;
 
    // }
 }

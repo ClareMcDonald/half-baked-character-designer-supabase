@@ -60,20 +60,19 @@ export async function updateBottom(value){
     return checkError(response);    
 }
 
-export async function updateCatchphrases(catchphrasesArray){
+export async function updateCatchphrases(value){
     const currentUserId = client.auth.user().id;
 
     // in supabase, update the catchphrases property
     const response = await client
         .from('characters')
-        .update({ catchphrases: catchphrasesArray })
+        .update({ catchphrases: value })
         .match({ user_id: currentUserId })
         .single();
     // for the character whose user_id match's the currently logged in user's id
 
     return checkError(response);    
 }
-
 
 /*
 CHALLENGE: how would you use this function? which functions would it replace? what's going on with the brackets in the update() arguments?
