@@ -103,16 +103,22 @@ function displayStats() {
 
 async function fetchAndDisplayCharacter() {
     // fetch the character from supabase
-    await async function getCharacter();
+    const character = await getCharacter();
     
     // if the character has a head, display the head in the dom
-    headEl.value = character.head;
+    if (character.head) {
+        headEl.style.backgroundImage = `../(${character.head}-head.png)`;
+    }
 
     // if the character has a middle, display the middle in the dom
-    middleEl.value = character.middle;
+    if (character.middle) {
+        middleEl.style.backgroundImage = `../(${character.middle}-middle.png)`;
+    }
 
     // if the character has a pants, display the pants in the dom
-    bottomEl.value = character.bottom;
+    if (character.bottom) {
+        bottomEl.style.backgroundImage = `../(${character.bottom}-pants.png)`;
+    }
 
     // loop through catchphrases and display them to the dom (clearing out old dom if necessary)
     for (let catchphrase of catchphrases) {
